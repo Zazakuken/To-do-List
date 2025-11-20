@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
-import Quotes from './Quotes'; // Add this import
-import Wishlist from './Wishlist'; // Add this import
+import Quotes from './Quotes';
+import Wishlist from './Wishlist';
 import './App.css';
-import DateTime from   './DateTime';
+import DateTime from './DateTime';
 import QuickNotes from './QuickNotes';
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
   const totalTasks = todos.length;
   const completedTasks = todos.filter(todo => todo.completed).length;
   const progressPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  const activeTasks = totalTasks - completedTasks;
   
   // after calculating overall progress
   const today = new Date().toDateString();
@@ -75,78 +76,117 @@ function App() {
   };
 
   return (
-  <div className="App">
-    <div className="app-container">
-      {/* Left Side - To-Do List */}
-      <div className="left-side">
-        <h1>My To-Do List</h1>
-        
-        {/* Filter buttons */}
-        <div className="filter-buttons">
-          <button 
-            onClick={() => setFilter('all')} 
-            className={filter === 'all' ? 'active-filter' : ''}
-          >
-            All
-          </button>
-          <button 
-            onClick={() => setFilter('active')} 
-            className={filter === 'active' ? 'active-filter' : ''}
-          >
-            Active
-          </button>
-          <button 
-            onClick={() => setFilter('completed')} 
-            className={filter === 'completed' ? 'active-filter' : ''}
-          >
-            Completed
-          </button>
-        </div>
-
-        {/* Task stats */}
-        <div className="task-stats">
-          <p>Active: {todos.filter(todo => !todo.completed).length}</p>
-          <p>Completed: {completedTasks}</p>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="progress-container">
-          <div className="progress-header">
-            <span>Overall Progress</span>
-            <span>{progressPercentage}%</span>
+    <div className="App">
+      <div className="app-shell">
+        <header className="app-hero">
+          <div className="hero-copy">
+            <p className="hero-kicker">Plan • Focus • Celebrate</p>
+            <h1>My To-Do Command Center</h1>
+            <p className="hero-subtitle">
+              Stay on top of priorities and keep your momentum throughout the day.
+            </p>
           </div>
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <span>Total tasks</span>
+              <strong>{totalTasks}</strong>
+            </div>
+            <div className="hero-stat">
+              <span>Active</span>
+              <strong>{activeTasks}</strong>
+            </div>
+            <div className="hero-stat">
+              <span>Today's focus</span>
+              <strong>{todayProgress}%</strong>
+            </div>
           </div>
-        </div>
+        </header>
 
-        <AddTodo onAdd={addTodo} />
-        <TodoList
-          todos={filteredTodos}
-          onToggle={toggleTodo}
-          onDelete={deleteTodo}
-          onEdit={editTodo}
-        />
-      </div>
-      
-      {/* Right Side Panels (Quotes + Goals) */}
-      <div className="right-side-panels">
-        <div className="right-side-panel">
-          <Quotes />
-          <Wishlist />
-        </div>
-      </div>
-      
-      {/* Plain Right Side (Time + Notes) */}
-      <div className="plain-right-side">
-        <DateTime />
-        <QuickNotes />
+        <main className="dashboard-grid">
+          <section className="panel-card tasks-panel">
+            <div className="panel-header">
+              <div>
+                <p className="eyebrow">Tasks</p>
+                <h2>Today's Flow</h2>
+              </div>
+              <span className="task-chip">
+                {totalTasks ? `${completedTasks}/${totalTasks} done` : 'Let’s get started'}
+              </span>
+            </div>
+
+            <AddTodo onAdd={addTodo} />
+
+            <div className="tasks-controls">
+              <div className="filter-buttons">
+                <button
+                  onClick={() => setFilter('all')}
+                  className={filter === 'all' ? 'active-filter' : ''}
+                >
+                  All
+                </button>
+                <button
+                  onClick={() => setFilter('active')}
+                  className={filter === 'active' ? 'active-filter' : ''}
+                >
+                  Active
+                </button>
+                <button
+                  onClick={() => setFilter('completed')}
+                  className={filter === 'completed' ? 'active-filter' : ''}
+                >
+                  Completed
+                </button>
+              </div>
+
+              <div className="task-stats">
+                <div>
+                  <p className="stat-label">Active</p>
+                  <span className="stat-value">{activeTasks}</span>
+                </div>
+                <div>
+                  <p className="stat-label">Completed</p>
+                  <span className="stat-value">{completedTasks}</span>
+                </div>
+                <div>
+                  <p className="stat-label">Due today</p>
+                  <span className="stat-value">{todayTasks.length}</span>
+                </div>
+              </div>
+
+              <div className="progress-container">
+                <div className="progress-header">
+                  <span>Overall progress</span>
+                  <span>{progressPercentage}%</span>
+                </div>
+                <div className="progress-bar">
+                  <div
+                    className="progress-fill"
+                    style={{ width: `${progressPercentage}%` }}
+                  ></div>
+                </div>
+                <p className="progress-subtext">
+                  {todayCompleted}/{todayTasks.length || 0} tasks completed today
+                </p>
+              </div>
+            </div>
+
+            <TodoList
+              todos={filteredTodos}
+              onToggle={toggleTodo}
+              onDelete={deleteTodo}
+              onEdit={editTodo}
+            />
+          </section>
+
+          <aside className="side-panel">
+            <Quotes />
+            <Wishlist />
+            <DateTime />
+            <QuickNotes />
+          </aside>
+        </main>
       </div>
     </div>
-  </div>
   );
 }
 

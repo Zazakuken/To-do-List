@@ -5,6 +5,30 @@ const AddTodo = ({ onAdd }) => {
   const [priority, setPriority] = useState('medium'); // Default to medium
   const [dueDate, setDueDate] = useState('');
 
+  const sampleTasks = [
+    {
+      id: 'sample-1',
+      text: 'Plan weekly sprint',
+      completed: false,
+      priority: 'high',
+      dueDate: new Date().toISOString().slice(0, 10),
+    },
+    {
+      id: 'sample-2',
+      text: 'Review pull requests',
+      completed: false,
+      priority: 'medium',
+      dueDate: null,
+    },
+    {
+      id: 'sample-3',
+      text: 'Read 10 pages of a book',
+      completed: false,
+      priority: 'low',
+      dueDate: null,
+    },
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
@@ -18,14 +42,6 @@ const AddTodo = ({ onAdd }) => {
       setDueDate(''); // Reset date
     }
   };
-  // A sample or example of a task
-    const loadSampleData = () => {
-  const sampleTasks = [
-    { id: 1, text: "Try this app!", completed: false, priority: "high", dueDate: "2025-10-25" },
-    { id: 2, text: "Add your own tasks", completed: false, priority: "medium", dueDate: null }
-  ];
-  setTodos(sampleTasks);
-};
 
   return (
     <form onSubmit={handleSubmit} className="add-todo-form">
@@ -58,6 +74,13 @@ const AddTodo = ({ onAdd }) => {
       />
       
       <button type="submit" className="add-btn">Add</button>
+      <button
+        type="button"
+        className="ghost-btn"
+        onClick={() => sampleTasks.forEach(onAdd)}
+      >
+        Quick sample
+      </button>
     </form>
   );
 };

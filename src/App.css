@@ -678,3 +678,450 @@ h1 {
     padding: 20px;
   }
 }
+
+/* === Modern UI Refresh === */
+:root {
+  --page-bg: #05060f;
+  --surface: rgba(14, 18, 30, 0.92);
+  --surface-card: rgba(22, 28, 45, 0.92);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #8c6ff7;
+  --accent-2: #5de0e6;
+  --success: #4ade80;
+  --danger: #f87171;
+  --text-primary: #f8f9ff;
+  --text-secondary: rgba(248, 249, 255, 0.68);
+  --shadow-soft: 0 20px 40px rgba(5, 6, 15, 0.45);
+  --shadow-card: 0 12px 30px rgba(3, 4, 9, 0.6);
+}
+
+.App {
+  min-height: 100vh;
+  padding: clamp(24px, 4vw, 48px);
+  background: radial-gradient(circle at 10% 20%, rgba(140, 111, 247, 0.15), transparent 45%),
+              radial-gradient(circle at 90% 10%, rgba(93, 224, 230, 0.15), transparent 40%);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+}
+
+.app-shell {
+  width: min(1200px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.app-hero {
+  background: linear-gradient(135deg, rgba(22, 27, 45, 0.95), rgba(12, 18, 36, 0.9));
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-copy {
+  flex: 1 1 320px;
+}
+
+.hero-kicker {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  font-size: 0.75rem;
+  margin: 0 0 12px;
+}
+
+.hero-subtitle {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  max-width: 420px;
+}
+
+.hero-stats {
+  flex: 1 1 240px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.hero-stat {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.hero-stat span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.hero-stat strong {
+  font-size: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel-card {
+  background: var(--surface-card);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(40px);
+}
+
+.tasks-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h2 {
+  margin: 4px 0 0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.task-chip {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(93, 224, 230, 0.12);
+  color: var(--accent-2);
+  font-weight: 600;
+  border: 1px solid rgba(93, 224, 230, 0.4);
+}
+
+.tasks-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-todo-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px 140px auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.todo-input,
+.priority-select,
+.due-date-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.todo-input:focus,
+.priority-select:focus,
+.due-date-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.add-btn {
+  height: 100%;
+  background: linear-gradient(120deg, var(--accent), #6a8bff);
+  border: none;
+  border-radius: 18px;
+  font-weight: 600;
+  color: white;
+  padding: 0 24px;
+  box-shadow: 0 10px 20px rgba(140, 111, 247, 0.35);
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ghost-btn:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.filter-buttons {
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  gap: 6px;
+}
+
+.filter-buttons button {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.filter-buttons .active-filter {
+  background: rgba(140, 111, 247, 0.2);
+  color: var(--text-primary);
+  box-shadow: inset 0 0 12px rgba(140, 111, 247, 0.25);
+}
+
+.task-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.task-stats .stat-label {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.task-stats .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.progress-container {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #5de0e6, #004aad, #cb6ce6);
+  transition: width 0.4s ease;
+}
+
+.progress-subtext {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.todo-item:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.todo-content {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+}
+
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  accent-color: var(--accent);
+  margin-top: 4px;
+}
+
+.todo-text-container {
+  flex: 1;
+}
+
+.todo-text {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.todo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.priority-low {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--success);
+}
+
+.priority-medium {
+  background: rgba(250, 204, 21, 0.15);
+  color: #fcd34d;
+}
+
+.priority-high {
+  background: rgba(248, 113, 113, 0.18);
+  color: var(--danger);
+}
+
+.due-date {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.delete-btn {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--danger);
+  border-radius: 14px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  padding: 10px 14px;
+}
+
+.side-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.side-panel > * {
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: var(--shadow-soft);
+}
+
+.quotes-panel h3,
+.wishlist-panel h3,
+.datetime-panel h3,
+.quick-notes-panel h3 {
+  margin-top: 0;
+}
+
+.wishlist-input,
+.wishlist-list,
+.wishlist-item,
+.wishlist-add,
+.wishlist-panel button,
+.quick-notes-panel textarea,
+.notes-textarea,
+.datetime-panel,
+.quotes-panel {
+  width: 100%;
+}
+
+.quick-notes-panel textarea,
+.notes-textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 16px;
+  color: var(--text-primary);
+}
+
+.datetime-panel .time {
+  font-size: 2rem;
+  color: var(--accent-2);
+}
+
+.empty-message {
+  text-align: center;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px dashed var(--border);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-todo-form {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .app-hero {
+    padding: 24px;
+  }
+
+  .panel-card {
+    padding: 22px;
+  }
+
+  .todo-item {
+    flex-direction: column;
+  }
+}
