@@ -330,6 +330,15 @@ h1 {
   min-width: 120px;
 }
 
+.priority-select,
+.priority-select option {
+  color: #d1d6e5;
+}
+
+.priority-select option {
+  background: #0f1424;
+}
+
 .add-todo-form input, .add-todo-form select {
   flex: 1;
   min-width: 150px;
@@ -449,28 +458,36 @@ h1 {
   font-size: 18px;
 }
 
+
 .wishlist-add {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .wishlist-input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background-color: #333;
-  color: white;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  min-height: 48px;
 }
 
 .add-goal-btn {
-  padding: 10px 15px;
+  padding: 0 20px;
   border: none;
-  border-radius: 4px;
-  background-color: #4CAF50;
-  color: white;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #4ade80, #22c55e);
+  color: #041008;
   cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
 }
 
 .add-goal-btn:hover {
