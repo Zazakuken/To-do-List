@@ -11,7 +11,12 @@ const quotes = [
   "Believe you can and you're halfway there. — Theodore Roosevelt",
   "The harder you work for something, the greater you'll feel when you achieve it. — Unknown",
   "Dream big and dare to fail. — Norman Vaughan",
-  "It does not matter how slowly you go as long as you do not stop. — Confucius"
+  "It does not matter how slowly you go as long as you do not stop. — Confucius",
+  "The only man who never makes a mistake is the man who never does anything. — Theodore Roosevelt",
+  "Don't watch the clock; do what it does. Keep going. — Sam Levenson",
+  "If there is no struggle, there is no progress. — Frederick Douglass",
+  "You don't have to see the whole staircase, just take the first step. — Martin Luther King, Jr",
+  "Champions keep playing until they get it right. — Billie Jean King",
 ];
 
 const Quotes = () => {
